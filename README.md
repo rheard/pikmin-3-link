@@ -57,8 +57,21 @@ somewhere else).
 
 ## Installing
 
-Copy the `Link` folder into the game's mod folder and start the game. To get Alph back, take the
-folder out again. Saves are not touched.
+The `Link` folder has two halves: `romfs`, the game files it replaces, and `exefs`, his moves'
+code (a program file of its own, `subsdk1`, and a patch of the game's program that calls it).
+
+- **On an emulator**, copy the whole `Link` folder into the game's mod folder. Emulators load both
+  halves from there.
+- **On a Switch running Atmosphère**, the pieces go to different places on the SD card:
+  - everything in `Link/romfs/` goes in `atmosphere/contents/<title ID>/romfs/`, where
+    `<title ID>` is Pikmin 3 Deluxe's sixteen-digit title ID;
+  - `Link/exefs/subsdk1` goes in `atmosphere/contents/<title ID>/exefs/`;
+  - the patch, `Link/exefs/D467F5AD367BBEE88C51F8C468143CF23486A44B.ips`, goes in a folder of its
+    own under `atmosphere/exefs_patches/`, for example
+    `atmosphere/exefs_patches/Link/D467F5AD367BBEE88C51F8C468143CF23486A44B.ips`. Keep its name:
+    it is the build ID of the program the patch fits.
+
+Then start the game. To get Alph back, take the files out again. Saves are not touched.
 
 Link and [Mario](https://github.com/rheard/pikmin-3-mario) replace the same files, so use one at a
 time.
